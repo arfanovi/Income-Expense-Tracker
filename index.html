@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Income and Expense Tracker</title>
+
+    <style>
+        body {
+                font-family: 'Roboto', sans-serif;
+              
+                line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
+.form-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+
+.input-group {
+
+    min-width: 200px;
+}
+
+.input-group label {
+
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+
+.input-group input, .input-group select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.add-btn {
+    padding: 10px 20px;
+    border: none;
+    background-color: #28a745;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.add-btn i {
+    margin-right: 5px;
+}
+
+
+
+.add-btn:hover {
+    background-color: #218838;
+}
+
+.totals-container {
+    margin-bottom: 20px;
+}
+
+.totals {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.totals p {
+    margin: 10px 0;
+    font-size: 1.2em;
+}
+
+
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 2.5em;
+    color: #333;
+}
+
+
+
+.table-container {
+    overflow-x: auto;
+}
+
+
+table thead {
+    background-color: #333;
+    color: white;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+button.delete-btn {
+    padding: 5px 10px;
+    border: none;
+    background-color: #dc3545;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button.delete-btn:hover {
+    background-color: #c82333;
+}
+
+
+@media (min-width: 1024px) {
+    /* Add your desktop styles here */
+
+    table {
+    width: 70%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+
+}
+.main-1{
+    margin-left: 25vh;
+}
+
+}
+
+
+@media (max-width: 768px) {
+    .form-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .input-group { 
+        min-width: 100%;
+    }
+
+    .add-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    table th, table td {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 2em;
+    }
+
+    .totals p {
+        font-size: 1em;
+    }
+} 
+
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>
+                <h1>Income and Expense Track</h1>
+            </h1>
+        </div>
+           
+        <div class="totals-container">
+            <div class="totals">
+                <p>Balance: <span id="total-balance">$0.00</span></p>
+                <p>Total Income: <span id="total-income">$0.00</span></p>
+                <p>Total Expense: <span id="total-expense">$0.00</span></p>
+            </div>
+       </div>
+    </header>
+
+    <main>
+        <section class="main-1"">
+           <div class="form-container">
+            <div class="input-group">
+                <label for="name">
+                    Name
+                </label>
+                <input type="text" name="" id="name" placeholder="Enter Name">
+            </div>
+            <div class="input-group">
+                <label for="Type">
+                    Amount
+                </label>
+                <input type="text" name="" id="amount" placeholder="Enter Amount">
+            </div>
+
+            <div class="input-group">
+                <label for="itemType">Type: </label>
+                <select name="" id="itemType">
+                    <option value="1">Income</option>
+                    <option value="2">Expense</option>
+                </select>
+            </div>
+
+            <div>
+                <button onclick="addEntry()" class="add-btn"><i class="fas fa-plus"></i>
+                    Add Entry
+                </button>
+            </div>
+           </div>
+        
+           <div class="table-container">
+            <table id="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Amount</th>
+                        <th>Type</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+
+            </table>
+
+           </div>
+        </section>
+    </main>
+    
+
+    <!-- <script src="script.js"></script> -->
+    <script src="js/script.js"></script>
+</body>
+</html>
